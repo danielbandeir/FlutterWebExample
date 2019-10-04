@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:dio/dio.dart';
 
 
 void main() => runApp(MyApp());
@@ -9,70 +8,65 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Hello World',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key key }) : super(key: key);
 
-  final String title;
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
+      backgroundColor: Colors.white,
+      body: Center(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            DrawerHeader(
-              child: Text("Daniel Bandeira"),
-              decoration: BoxDecoration(
-                color: Colors.blue
-              ),
+            Text(
+              'Hello',
+              style: TextStyle(color: Color(0xff393e46), fontSize: 62, fontWeight: FontWeight.bold),
+            ),
+            Text(
+              'World',
+              style: TextStyle(color: Color(0xff00adb5), fontSize: 102, fontWeight: FontWeight.bold)
             )
           ],
         ),
       ),
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
-            ),
-          ],
-        ),
-      ),
       floatingActionButton: FloatingActionButton(
-        onPressed:  null,
+        onPressed: () => showMessageDialog(context),
+        child: Icon(Icons.sentiment_very_satisfied),
         backgroundColor: Colors.black,
       ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+
+  Future showMessageDialog(BuildContext context) {
+    return showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Créditos"),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.0)
+          ),
+          content: Text("Feito por Daniel Bandeira"),
+        );
+      }
     );
   }
 }
