@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todo/modules/home/home_bloc.dart';
 import 'package:todo/modules/home/home_page.dart';
+import 'package:todo/shared/repository/Impl/task_repository_impl.dart';
 
 void main() => runApp(MyApp());
 
@@ -11,7 +12,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'To do list',
-      home: HomePage(bloc: HomeBloc(),),
+      home: HomePage(bloc: HomeBloc(
+        taskRepository: TaskRepositoryImpl()
+      )),
     );
   }
 }
