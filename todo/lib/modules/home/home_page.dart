@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo/modules/home/home_bloc.dart';
+import 'package:todo/shared/models/task_model.dart';
 
 class HomePage extends StatefulWidget {
   final HomeBloc bloc;
@@ -21,16 +22,17 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
       floatingActionButton: FloatingActionButton(
         onPressed: () => addTask(context),
         backgroundColor: Colors.black,
         child: Icon(Icons.add, color: Colors.white),
       ),
-      body: StreamBuilder<String>(
-        stream: widget.bloc.taskName,
+      body: StreamBuilder<TaskModel>(
+        stream: widget.bloc.task,
         builder: (context, snapshot) {
-          return snapshot.hasData ? Text(snapshot.data) : Center(child: Text("Empty, sorry =/"),);
+          return snapshot.hasData ? ListView(children: <Widget> [ Text(snapshot.data.title) ]) : Center(child: Text("Empty, sorry =/"),);
         },
       ),
     );
@@ -44,8 +46,9 @@ class _HomePageState extends State<HomePage> {
             title: Text("Adicionar task"),
             content: Container(
               child: FractionallySizedBox(
-                heightFactor: 0.2,
+                heightFactor: 0.3,
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     TextField(
                       onChanged: widget.bloc.onChangeTaskName,
