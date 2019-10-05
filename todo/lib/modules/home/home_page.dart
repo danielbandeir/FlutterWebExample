@@ -14,7 +14,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     widget.bloc.dispose();
   }
@@ -29,9 +28,9 @@ class _HomePageState extends State<HomePage> {
         child: Icon(Icons.add, color: Colors.white),
       ),
       body: StreamBuilder<String>(
-        stream: widget.bloc.task,
+        stream: widget.bloc.taskName,
         builder: (context, snapshot) {
-          return snapshot.hasData ? Text(snapshot.data) : Text("Empty, sorry =/");
+          return snapshot.hasData ? Text(snapshot.data) : Center(child: Text("Empty, sorry =/"),);
         },
       ),
     );
@@ -43,8 +42,20 @@ class _HomePageState extends State<HomePage> {
         builder: (BuildContext context) {
           return AlertDialog(
             title: Text("Adicionar task"),
-            content: TextField(
-              onChanged: widget.bloc.onChangeTask,
+            content: Container(
+              child: FractionallySizedBox(
+                heightFactor: 0.2,
+                child: Column(
+                  children: <Widget>[
+                    TextField(
+                      onChanged: widget.bloc.onChangeTaskName,
+                    ),
+                    TextField(
+                      onChanged: widget.bloc.onChangeTaskDescription,
+                    )
+                  ],
+                ),
+              ),
             ),
             actions: <Widget>[
               RaisedButton(
