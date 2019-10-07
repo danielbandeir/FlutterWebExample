@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/painting.dart';
 import 'package:party_project/modules/login/login_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -11,6 +10,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: Stack(
         children: <Widget>[
@@ -54,26 +54,50 @@ class _HomePageState extends State<HomePage> {
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              FlatButton(
-                onPressed: () {
-                  Navigator.push(context, CupertinoPageRoute(builder: (context) => LoginPage()));
-                },
-                child: Container(
-                  width: double.infinity/4,
-                  height: 50,
-                  decoration: BoxDecoration(
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    width: size.width*0.3,
+                    height: size.height*0.1,
+                    child: RaisedButton(
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()));
+                      },
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(15)
-                  ),
-                  child: Center(
-                    child: Text("Sign in"),
-                  ),
-                ),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+
+                      child: Text("Sign in",
+                          style: TextStyle(color: Colors.black, fontFamily: 'Roboto', fontSize: 32, fontWeight: FontWeight.w700)),
+                    ),
+                  )
+                ],
               ),
               SizedBox(
                 height: 15,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    width: size.width*0.3,
+                    height: size.height*0.1,
+                    child: RaisedButton(
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()));
+                      },
+                      color: Colors.transparent,
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15), side: BorderSide(color: Colors.white)),
+
+                      child: Text("Sign up",
+                          style: TextStyle(color: Colors.white, fontFamily: 'Roboto', fontSize: 32, fontWeight: FontWeight.w700)),
+                    ),
+                  )
+                ],
+              ),
+              SizedBox(
+                height: 45,
               )
             ],
           ),
