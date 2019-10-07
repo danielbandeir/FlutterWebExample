@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:party_project/modules/home/widgets/home_body.dart';
 
 class HomePage extends StatelessWidget {
