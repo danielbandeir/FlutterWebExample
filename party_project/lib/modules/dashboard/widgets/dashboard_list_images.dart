@@ -8,7 +8,7 @@ class DashboardListImages extends StatefulWidget {
 }
 
 class _DashboardListImagesState extends State<DashboardListImages> {
-  DashboardBloc dashboardBloc;
+  DashboardBloc dashboardBloc = DashboardBloc();
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
