@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:party_project/modules/home/widgets/home_background.dart';
 import 'package:party_project/modules/login/login_page.dart';
 
 class HomeBody extends StatefulWidget {
@@ -13,17 +14,7 @@ class _HomeBodyState extends State<HomeBody> {
      Size size = MediaQuery.of(context).size;
     return Stack(
         children: <Widget>[
-          Container(
-            width: double.infinity,
-            height: double.infinity,
-            child: Hero(
-              tag: tagBackground,
-              child: Image.asset(
-                "assets/images/party_background.jpg",
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
+          HomeBackground(tagBackground: this.tagBackground),
           Opacity(
             opacity: 0.5,
             child: Container(
