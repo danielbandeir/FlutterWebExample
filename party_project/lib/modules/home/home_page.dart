@@ -8,6 +8,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  String tagBackground = "background";
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -17,9 +18,12 @@ class _HomePageState extends State<HomePage> {
           Container(
             width: double.infinity,
             height: double.infinity,
-            child: Image.asset(
-              "assets/images/party_background.jpg",
-              fit: BoxFit.cover,
+            child: Hero(
+              tag: tagBackground,
+              child: Image.asset(
+                "assets/images/party_background.jpg",
+                fit: BoxFit.cover,
+              ),
             ),
           ),
           Opacity(
@@ -63,7 +67,7 @@ class _HomePageState extends State<HomePage> {
                     height: size.height*0.1,
                     child: RaisedButton(
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage(tag: tagBackground)));
                       },
                       color: Colors.white,
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
@@ -85,7 +89,7 @@ class _HomePageState extends State<HomePage> {
                     height: size.height*0.1,
                     child: RaisedButton(
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage(tag: tagBackground)));
                       },
                       color: Colors.transparent,
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15), side: BorderSide(color: Colors.white)),
