@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:party_project/modules/dashboard/widgets/dashboard_body.dart';
-import 'package:party_project/shared/models/person_model.dart';
 
 class DashboardPage extends StatefulWidget {
   @override
